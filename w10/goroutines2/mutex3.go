@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sync"
 )
 
@@ -28,20 +27,20 @@ func (sc *SafeCounter) Reset() {
 	sc.value = 0
 }
 
-func main() {
-	counter := SafeCounter{}
-	var wg sync.WaitGroup
-
-	for i := 0; i < 10000; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			counter.Increment()
-		}()
-	}
-	wg.Wait()
-
-	fmt.Printf("Значение счетчика: %d\n", counter.GetValue())
-	counter.Reset() // Сбрасываем счетчик
-	fmt.Printf("После сброса: %d\n", counter.GetValue())
-}
+//func main() {
+//	counter := SafeCounter{}
+//	var wg sync.WaitGroup
+//
+//	for i := 0; i < 10000; i++ {
+//		wg.Add(1)
+//		go func() {
+//			defer wg.Done()
+//			counter.Increment()
+//		}()
+//	}
+//	wg.Wait()
+//
+//	fmt.Printf("Значение счетчика: %d\n", counter.GetValue())
+//	counter.Reset() // Сбрасываем счетчик
+//	fmt.Printf("После сброса: %d\n", counter.GetValue())
+//}
